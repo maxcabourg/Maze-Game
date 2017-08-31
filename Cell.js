@@ -56,4 +56,10 @@ this.Cell = function(x, y){
   this.hightlight = function(){
     image(img, this.realX, this.realY, cell_width, cell_height);
   }
+
+  this.showLootCase = function(){
+    noStroke();
+    fill(255, 0, 0, 100);
+    rect(this.realX, this.realY, cell_width, cell_height);
+  }
 }

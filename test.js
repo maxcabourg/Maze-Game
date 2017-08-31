@@ -8,18 +8,21 @@ var grid;
 var stack = [];
 var current;
 var img;
+var loot;
 
 function setup(){
   createCanvas(w+1, h+1);
   initGrid();
   generateMaze();
   current = grid[0][0];
+  loot = grid[cols - 1][rows - 1];
   img = loadImage("assets/image.jpg");
 }
 
 function draw(){
   drawGrid();
   current.hightlight();
+  loot.showLootCase();
   
 }
 
