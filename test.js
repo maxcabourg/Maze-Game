@@ -23,6 +23,9 @@ function draw(){
   drawGrid();
   current.hightlight();
   loot.showLootCase();
+  if(current == loot){
+    console.log("Vous avez gagné");
+  }
   
 }
 
