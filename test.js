@@ -91,3 +91,28 @@ function generateMaze(){
 function debug(text){
   console.log(text);
 }
+
+function keyPressed(){
+  switch(keyCode){
+    case UP_ARROW:
+      if(!current.walls[0]){
+        current = grid[current.x][current.y - 1];
+      }
+    break;
+    case DOWN_ARROW:
+      if(!current.walls[2]){
+        current = grid[current.x][current.y + 1];
+      }
+    break;
+    case LEFT_ARROW:
+      if(!current.walls[3]){
+        current = grid[current.x - 1][current.y];
+      }
+    break;
+    case RIGHT_ARROW:
+    if(!current.walls[1]){
+      current = grid[current.x + 1][current.y];
+    }
+    break;
+  }
+}
