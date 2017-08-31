@@ -12,26 +12,15 @@ var img;
 function setup(){
   createCanvas(w+1, h+1);
   initGrid();
-  img = loadImage("assets/image.jpg");
+  generateMaze();
   current = grid[0][0];
-  current.visited = true;
+  img = loadImage("assets/image.jpg");
 }
 
 function draw(){
   drawGrid();
   current.hightlight();
-  current.setUnvisitedNeighbors();
-  if(current.unvisitedNeighbors.length > 0){
-    //Choose random neighbors then
-    var randomIndex = Math.floor(Math.random() * (current.unvisitedNeighbors.length));
-    var next = current.unvisitedNeighbors[randomIndex];
-    next.visited = true;
-    stack.push(current);
-    removeWalls(current, next);
-    current = next;
-  } else if(stack.length > 0) {
-    current = stack.pop();
-  }
+  
 }
 
 function removeWalls(a, b){
@@ -75,6 +64,25 @@ function drawGrid(){
       grid[x][y].show();
     }
   }
+}
+
+function generateMaze(){
+  current = grid[0][0];
+  current.visited = true;
+  do {
+    current.setUnvisitedNeighbors();
+    if(current.unvisitedNeighbors.length > 0){
+      //Choose random neighbors then
+      var randomIndex = Math.floor(Math.random() * (current.unvisitedNeighbors.length));
+      var next = current.unvisitedNeighbors[randomIndex];
+      next.visited = true;
+      stack.push(current);
+      removeWalls(current, next);
+      current = next;
+    } else if(stack.length > 0) {
+      current = stack.pop();
+    }
+  } while(stack.length > 0);
 }
 
 function debug(text){
