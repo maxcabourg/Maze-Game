@@ -1,9 +1,9 @@
 var cols = 10;
 var rows = 10;
 var w = 600;
-var h = 600;
+var h = 640;
 var cell_width = Math.floor(w / cols);
-var cell_height = Math.floor(h / rows);
+var cell_height = Math.floor((h - 40) / rows);
 var grid;
 var stack = [];
 var current;
@@ -13,9 +13,10 @@ var loot;
 function setup(){
   frameRate(60);
   createCanvas(w+1, h+1);
-  initGrid();
-  generateMaze();
+  resetGame();
   current = grid[0][0];
+  var button = createButton("reset");
+  button.mousePressed(resetGame);
   loot = grid[cols - 1][rows - 1];
   img = loadImage("assets/image.jpg");
 }
@@ -49,6 +50,11 @@ function removeWalls(a, b){
       b.walls[0] = false;
     }
   }
+}
+
+function resetGame(){
+  initGrid();
+  generateMaze();
 }
 
 function initGrid(){
