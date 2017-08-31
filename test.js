@@ -1,7 +1,7 @@
-var cols = 20;
-var rows = 20;
-var w = 400;
-var h = 400;
+var cols = 10;
+var rows = 10;
+var w = 600;
+var h = 600;
 var cell_width = Math.floor(w / cols);
 var cell_height = Math.floor(h / rows);
 var grid;
