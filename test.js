@@ -24,6 +24,7 @@ function draw(){
   current.hightlight();
   loot.showLootCase();
   if(current == loot){
+    noLoop();
     console.log("Vous avez gagné");
   }
   
