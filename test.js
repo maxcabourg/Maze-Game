@@ -7,10 +7,12 @@ var cell_height = Math.floor(h / rows);
 var grid;
 var stack = [];
 var current;
+var img;
 
 function setup(){
   createCanvas(w+1, h+1);
   initGrid();
+  img = loadImage("assets/image.jpg");
   current = grid[0][0];
   current.visited = true;
 }

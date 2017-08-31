@@ -54,8 +54,6 @@ this.Cell = function(x, y){
   }
   
   this.hightlight = function(){
-    noStroke();
-    fill(140, 10, 50, 100);
-    rect(this.realX, this.realY, cell_width, cell_height);
+    image(img, this.realX, this.realY, cell_width, cell_height);
   }
 }
