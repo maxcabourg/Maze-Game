@@ -11,7 +11,7 @@ var img;
 var loot;
 
 function setup(){
-  frameRate(10);
+  frameRate(60);
   createCanvas(w+1, h+1);
   initGrid();
   generateMaze();
