@@ -76,6 +76,9 @@ function initGrid(level){
     break;
   }
 
+  cell_width = Math.floor(w / cols); //Largeur d'une case
+  cell_height = Math.floor((h - 40) / rows);
+
   grid = new Array(cols);
   for(var i = 0; i < cols; i++){
     grid[i] = new Array(grid);
