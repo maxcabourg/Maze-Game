@@ -1,17 +1,19 @@
-var cols = 10;
-var rows = 10;
-var w = 600;
-var h = 640;
-var cell_width = Math.floor(w / cols);
-var cell_height = Math.floor((h - 40) / rows);
-var grid;
-var stack = [];
-var current;
-var img;
-var loot;
+var cols = 10; //Nombre de colonnes
+var rows = 10; //Nombre de lignes
+var w = 600; //Largeur du canvas
+var h = 640; //Hauteur du canvas avec le bouton reset y compris
+var cell_width = Math.floor(w / cols); //Largeur d'une case
+var cell_height = Math.floor((h - 40) / rows); //Hauteur d'une case
+var grid; //Grille initiale du jeu
+var stack = []; //Pile des cases explorées pour l'algorithme de generation des levels
+var current; //Case courante du joueur
+var img; //Skin de la case du joueur
+var loot; //Case de fin du labyrinthe
+var level; //Niveau du jeu
 
 function setup(){
   frameRate(60);
+  level = 1;
   createCanvas(w+1, h+1);
   resetGame();
   current = grid[0][0];
@@ -26,8 +28,8 @@ function draw(){
   current.hightlight();
   loot.showLootCase();
   if(current == loot){
-    noLoop();
-    console.log("Vous avez gagné");
+    level++;
+    resetGame(level);
   }
   
 }
@@ -53,12 +55,27 @@ function removeWalls(a, b){
 }
 
 function resetGame(){
-  initGrid();
+  initGrid(level);
   generateMaze();
 }
 
-function initGrid(){
+function initGrid(level){
   //init arrays
+  switch(level){
+    case 1:
+      cols = 10;
+      rows = 10;
+    break;
+    case 2:
+      cols = 15;
+      rows = 15;
+    break;
+    case 3:
+      cols = 20;
+      rows = 20;
+    break;
+  }
+
   grid = new Array(cols);
   for(var i = 0; i < cols; i++){
     grid[i] = new Array(grid);
