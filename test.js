@@ -102,6 +102,7 @@ function drawGrid(){
 
 function generateMaze(){
   current = grid[0][0];
+  loot = grid[cols - 1][rows - 1];
   current.visited = true;
   do {
     current.setUnvisitedNeighbors();
