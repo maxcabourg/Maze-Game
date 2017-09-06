@@ -11,6 +11,10 @@ var img; //Skin de la case du joueur
 var loot; //Case de fin du labyrinthe
 var level; //Niveau du jeu
 
+
+/**
+ * Initialise la partie
+ */
 function setup(){
   frameRate(60);
   level = 1;
@@ -23,6 +27,9 @@ function setup(){
   img = loadImage("assets/image.jpg");
 }
 
+/**
+ * Gère les actions a faire pour une frame
+ */
 function draw(){
   drawGrid();
   current.hightlight();
@@ -34,6 +41,11 @@ function draw(){
   
 }
 
+/**
+ * Enleve les murs entre 2 cellules du labyrinthe
+ * @param {Cell} a Première cellule 
+ * @param {*} b Deuxième cellule
+ */
 function removeWalls(a, b){
   var distX = a.x - b.x;
   if(distX === 1){ //a est a droite
@@ -54,11 +66,18 @@ function removeWalls(a, b){
   }
 }
 
+/**
+ * Réinitialise la partie en créant une nouvelle grille et un nouveau labyrinthe
+ */
 function resetGame(){
   initGrid(level);
   generateMaze();
 }
 
+/**
+ * Initialise la grille du labyrinthe avec des cellules
+ * @param {Number} level niveau de difficulté cad le nombre de cellules
+ */
 function initGrid(level){
   //init arrays
   switch(level){
@@ -92,6 +111,9 @@ function initGrid(level){
   }
 }
 
+/**
+ * Dessine la grille (après avoir généré le bayrinthe)
+ */
 function drawGrid(){
   for(var x = 0; x < cols; x++){
     for(var y = 0; y < rows; y++){
@@ -100,6 +122,9 @@ function drawGrid(){
   }
 }
 
+/**
+ * Génère le labyrinthe
+ */
 function generateMaze(){
   current = grid[0][0];
   loot = grid[cols - 1][rows - 1];
@@ -120,10 +145,17 @@ function generateMaze(){
   } while(stack.length > 0);
 }
 
+/**
+ * Fonction utilitaire pour débugger
+ * @param {String} text texte a afficher 
+ */
 function debug(text){
   console.log(text);
 }
 
+/**
+ * Gère les inputs claviers (seulement les flèches directionnelles)
+ */
 function keyPressed(){
   switch(keyCode){
     case UP_ARROW:

@@ -1,3 +1,6 @@
+/**
+ * "Classe" représentant une cellule du labyrinthe
+ */
 this.Cell = function(x, y){
   this.x = x;
   this.y = y;
@@ -7,6 +10,9 @@ this.Cell = function(x, y){
   this.visited = false;
   this.unvisitedNeighbors = [];
   
+  /**
+   * Affiche une cellule du labyrinthe
+   */
   this.show = function(){
     stroke(255);
     if(this.walls[0]){
@@ -29,6 +35,9 @@ this.Cell = function(x, y){
     
   }
   
+  /**
+   * Récupère les voisins non visités pour l'algorithme de génération
+   */
   this.setUnvisitedNeighbors = function(){
     this.unvisitedNeighbors = [];
     if(this.x > 0){ //Check left neighbor
@@ -53,10 +62,16 @@ this.Cell = function(x, y){
     }
   }
   
+  /**
+   * Affiche la cellule courante du joueur
+   */
   this.hightlight = function(){
     image(img, this.realX, this.realY, cell_width, cell_height);
   }
 
+  /**
+   * Affiche la case de sortie du labyrinthe
+   */
   this.showLootCase = function(){
     noStroke();
     fill(255, 0, 0, 100);
